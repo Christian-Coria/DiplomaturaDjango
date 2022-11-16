@@ -1,6 +1,8 @@
 from django.db import models
 
+
 class Categoria(models.Model):
+    
     clase = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
 
@@ -16,6 +18,18 @@ db_index=True
 
 
 class Producto(models.Model):
+
+    Borrador = 'Borr'
+    Publicado = 'Publi'
+    Retirado = 'Ret'
+    APROBACION_PRODUCTO = (
+        (Borrador , 'Borrador'),
+        (Publicado, 'Publicado'),
+        (Retirado, 'Retirado')
+    )
+
+
+    estado = models.CharField(max_length=10, choices=APROBACION_PRODUCTO, default='Borrador') #default es por defecto toma =...
     nombre = models.CharField(max_length=200)
     fecha_publicacion = models.DateTimeField('Fecha de Publicacion')
     imagen = models.ImageField(upload_to="nombre/%Y/%m/%d", blank=True, null=True) 

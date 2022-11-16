@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     #Aplicaciones de Terceros
 
     #Aplicaciones Propias
-    'diplomatura'
+    'diplomatura.apps.DiplomaturaConfig'
 
 ]
 
