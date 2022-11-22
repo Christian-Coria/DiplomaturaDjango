@@ -1,12 +1,12 @@
 from django.contrib import admin
 from diplomatura.models import Producto, Categoria
 
-class ProductoInLine(admin.TabularInLine):
+class ProductoInLine(admin.TabularInline):
     model = Producto
     extra = 0 #indicamos la cantidad de productos que podemos agregar
 
 
-class CategoriaAdmin(admin-ModelAdmin): #esta clase customiza ... asocia las clases
+class CategoriaAdmin(admin.ModelAdmin): #esta clase customiza ... asocia las clases
     inlines = [ProductoInLine]
 
 @admin.register(Producto)
@@ -26,7 +26,7 @@ class ProductoAdmin(admin.ModelAdmin):   #Filtro para el panel de administracion
     search_fields = ('nombre', 'estado',) # search_fields agrega opciones de busquedas
     list_display_links = ('nombre', 'fecha_publicacion',) #agrega links a cada columna para ingreso por click
     
-    @admin.display(descripcion='Name')  #customizamos el panel con una logica ... en este caso cambia a mayuscula los objetos
+    @admin.display(description='Name')  #customizamos el panel con una logica ... en este caso cambia a mayuscula los objetos
     def upper_case_name(self, obj):
         return ("%s %s" % (obj.nombre, obj.estado)).upper() # pasamos a mayuscula el nombre y el estado
 
