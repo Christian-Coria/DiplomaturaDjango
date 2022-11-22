@@ -1,7 +1,15 @@
 from django.contrib import admin
 from diplomatura.models import Producto, Categoria
 
+class ProductoInLine(admin.TabularInLine):
+    model = Producto
+    extra = 0 #indicamos la cantidad de productos que podemos agregar
 
+
+class CategoriaAdmin(admin-ModelAdmin): #esta clase customiza ... asocia las clases
+    inlines = [ProductoInLine]
+
+@admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):   #Filtro para el panel de administracion y mostrar lo que se decida en el orden que se elija
     #fields = ['categoria', 'fecha_publicacion', 'nombre', 'imagen']
     fieldsets = [
@@ -18,6 +26,7 @@ class ProductoAdmin(admin.ModelAdmin):   #Filtro para el panel de administracion
     search_fields = ('nombre', 'estado',) # search_fields agrega opciones de busquedas
     list_display_links = ('nombre', 'fecha_publicacion',) #agrega links a cada columna para ingreso por click
 
-admin.site.register(Producto,ProductoAdmin)
+#admin.site.register(Producto,ProductoAdmin) en lugar de esta linea podemos replazar por el decorador @admin.register(Producto)
+admin.site.register(Categoria,CategoriaAdmin)
 #admin.site.register(Producto)
-admin.site.register(Categoria)
+#admin.site.register(Categoria)

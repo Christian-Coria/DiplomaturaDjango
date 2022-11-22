@@ -32,7 +32,10 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=200)
     fecha_publicacion = models.DateTimeField('Fecha de Publicacion')
     imagen = models.ImageField(upload_to="nombre/%Y/%m/%d", blank=True, null=True) 
-    categoria = models.ManyToManyField(Categoria) # Relacion de muchos a muchos 
+    #categoria = models.ManyToManyField(Categoria) # Relacion de muchos a muchos 
+    categoria = models.ForeignKey(Categoria, blank=True, null=True, on_delete=models.CASCADE)#relacion de uno a muchos
+                                                                              
+    
     ''' blank=True, null=True    se indica que por defecto puede no tener nada el campo
         upload_to="producto/%Y/%m/%d"    indicamos donde se graba '''
 
