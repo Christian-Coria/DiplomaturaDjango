@@ -25,6 +25,11 @@ class ProductoAdmin(admin.ModelAdmin):   #Filtro para el panel de administracion
     list_filter = ('nombre', 'fecha_publicacion',) # list_filter es una tupla que permite filtrar
     search_fields = ('nombre', 'estado',) # search_fields agrega opciones de busquedas
     list_display_links = ('nombre', 'fecha_publicacion',) #agrega links a cada columna para ingreso por click
+    
+    @admin.display(descripcion='Name')  #customizamos el panel con una logica ... en este caso cambia a mayuscula los objetos
+    def upper_case_name(self, obj):
+        return ("%s %s" % (obj.nombre, obj.estado)).upper() # pasamos a mayuscula el nombre y el estado
+
 
 #admin.site.register(Producto,ProductoAdmin) en lugar de esta linea podemos replazar por el decorador @admin.register(Producto)
 admin.site.register(Categoria,CategoriaAdmin)
