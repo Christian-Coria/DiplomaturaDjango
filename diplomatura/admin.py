@@ -12,7 +12,11 @@ class ProductoAdmin(admin.ModelAdmin):   #Filtro para el panel de administracion
 
         )
     ]
-
+    list_display = ['tipo_de_producto','nombre','fecha_publicacion', 'imagen'] #visualizamos en forma de columnas 
+    ordering = ['-fecha_publicacion']    #ordenamos por fecha de publicacion en este caso el signo menos es para alterar el orden natural
+    list_filter = ('nombre', 'fecha_publicacion',) # list_filter es una tupla que permite filtrar
+    search_fields = ('nombre', 'estado',) # search_fields agrega opciones de busquedas
+    list_display_links = ('nombre', 'fecha_publicacion',) #agrega links a cada columna para ingreso por click
 
 admin.site.register(Producto,ProductoAdmin)
 #admin.site.register(Producto)
