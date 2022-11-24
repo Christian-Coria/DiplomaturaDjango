@@ -1,0 +1,61 @@
+redux user
+
+pip install django-registration-redux
+
+en setting.py:
+
+INSTALLED_APPS = [
+    'django.contrib.sites',
+    'registration', #should be immediately above 'django.contrib.admin'
+    'django.contrib.admin',
+    # ...other installed applications...
+]
+
+
+
+al ultimo:
+
+LOGIN_REDIRECT_URL = ' '
+LOGIN_URL = 'django.contib.auth.views.login'
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+SITE_ID = 1
+
+
+en urls.py:
+
+'accounts/', include('registration.backends.default.urls')),
+
+en templates:
+ copiamos la carpeta (C:\Users\desbl\workspace\NombredelProyecto\env\Lib\site-packages\registration\templates\registration)
+
+tambien copiamos (C:\Users\desbl\workspace\NombredelProyecto\env\Lib\site-packages\django\contrib\admin\templates\admin)
+
+
+ahora migrar (makemigrations, migrate)
+
+en la tabla llamade django site va la url para el dominio y asi funcione el sistema de registros
+
+Para el registro ir a account/activate      copiar la clave de activacion y pegarla en el navegador:
+127.0.0.800/accounts/activate/ghueevoeirhioevhioe349649649684(clave).... enter
+
+
+Autenticacion de Usuarios:
+
+backend:   (ejemplo Panel de Administracion)
+
+if request.user.is_authenticadted:
+	pass
+else:
+	pass
+
+frontend:   (ejemplo Formularios)
+
+{% if request.user.is_authenticadted %}
+	pass
+
+{% else %}
+	pass
+
+{% endif %}
+	

@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #Aplicaciones por Defecto
+    'django.contrib.sites',
+    'registration',  #should be immediately above 'django.contrib.admin'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +45,9 @@ INSTALLED_APPS = [
     #Aplicaciones de Terceros
 
     #Aplicaciones Propias
-    'diplomatura.apps.DiplomaturaConfig'
+    'diplomatura.apps.DiplomaturaConfig',
+    'usuarios.apps.UsuariosConfig',
+
 
 ]
 
@@ -147,3 +151,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = ' '
+LOGIN_URL = 'django.contib.auth.views.login'
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+SITE_ID = 1

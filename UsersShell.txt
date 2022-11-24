@@ -1,0 +1,21 @@
+user desde el shell
+
+en la carpeta 'env/scripts' abrir el cmd
+ activate
+
+(env)  estaria activado
+cd ..  hasta manage.py
+python manage.py shell
+
+>>> from django.contrib.auth.models import User
+>>> user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+>>> user.last_name = 'Lennon'
+>>> user.save()        # este usuario activo no es del staff ni tiene permisos
+>>> user.is_staff=True #para hacerlo del staf y pueda ingresar al admin
+>>> user.is_superuser=True  # para hacerlo en la creacion superuser
+otra forma es darle los permisos:
+opcion staf status debe estar tildada (desde el admin del super user) para ingresar al admin
+
+ 
+
+
